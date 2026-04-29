@@ -17,6 +17,6 @@ pdfminer.six
 python-docx
 scikit-learn
 reportlab
-
+opencv-python-headless
 openai
 httpx
