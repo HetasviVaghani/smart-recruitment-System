@@ -5,3 +5,10 @@ psycopg2-binary
 python-dotenv
 openai
 pydantic
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+openai
+passlib[bcrypt]
