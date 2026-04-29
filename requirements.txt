@@ -16,3 +16,7 @@ python-jose[cryptography]
 pdfminer.six
 python-docx
 scikit-learn
+reportlab
+
+openai
+httpx
