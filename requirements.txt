@@ -12,3 +12,4 @@ psycopg2-binary
 python-dotenv
 openai
 passlib[bcrypt]
+python-jose[cryptography]
