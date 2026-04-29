@@ -1,0 +1,38 @@
+# =========================
+# FRONTEND (Next.js)
+# =========================
+node_modules/
+.next/
+dist/
+build/
+
+# =========================
+# BACKEND (Python)
+# =========================
+venv/
+__pycache__/
+*.pyc
+
+# =========================
+# ENV FILES (IMPORTANT)
+# =========================
+.env
+.env.*
+!.env.example   # allow sample env
+
+backend/.env
+# =========================
+# UPLOADS / MEDIA
+# =========================
+uploads/
+
+# =========================
+# SYSTEM FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.vscode/s
