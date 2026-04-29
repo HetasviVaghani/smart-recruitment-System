@@ -20,3 +20,4 @@ reportlab
 opencv-python-headless
 openai
 httpx
+python-multipart
