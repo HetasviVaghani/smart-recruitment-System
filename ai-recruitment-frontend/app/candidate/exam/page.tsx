@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
+// ✅ IMPORTANT: dynamic API URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function ExamPage() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [answers, setAnswers] = useState<any>({});
@@ -31,7 +34,7 @@ export default function ExamPage() {
     return match ? match[2] : null;
   };
 
-  // ================= CHEATING LOGGER (FIXED) =================
+  // ================= CHEATING LOGGER =================
   const logCheating = async (reason: string) => {
     const token = getToken();
     if (!token || !jobId) return;
@@ -41,7 +44,7 @@ export default function ExamPage() {
     lastLogRef.current = now;
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/log-cheating", {
+      await fetch(`${API_URL}/log-cheating`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,9 +55,6 @@ export default function ExamPage() {
           violation_type: reason,
         }),
       });
-
-      const data = await res.json();
-      console.log("✅ Logged:", data);
     } catch (err) {
       console.error("❌ Logging failed:", err);
     }
@@ -78,7 +78,6 @@ export default function ExamPage() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
-        audio: false,
       });
 
       streamRef.current = stream;
@@ -122,13 +121,15 @@ export default function ExamPage() {
       await document.documentElement.requestFullscreen();
     } catch {}
 
-    await fetch(`http://127.0.0.1:8000/start-exam?job_id=${jobId}`, {
+    // ✅ Start exam
+    await fetch(`${API_URL}/start-exam?job_id=${jobId}`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });
 
+    // ✅ Fetch questions
     const res = await fetch(
-      `http://127.0.0.1:8000/exam-questions?job_id=${jobId}`,
+      `${API_URL}/exam-questions?job_id=${jobId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -201,9 +202,7 @@ export default function ExamPage() {
     const token = getToken();
 
     const res = await fetch(
-      `http://127.0.0.1:8000/submit-exam?job_id=${jobId}&time_taken=${
-        600 - timeLeft
-      }`,
+      `${API_URL}/submit-exam?job_id=${jobId}&time_taken=${600 - timeLeft}`,
       {
         method: "POST",
         headers: {
@@ -233,13 +232,11 @@ export default function ExamPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black to-slate-900 text-white p-6">
 
-      {/* HEADER */}
       <div className="sticky top-0 flex justify-between mb-6 bg-white/5 p-4 rounded-xl">
         <h1 className="font-bold text-lg">🧠 AI Proctored Exam</h1>
         <div>{timeLeft}s | ⚠ {warnings}/{MAX_WARNINGS}</div>
       </div>
 
-      {/* START BUTTON */}
       {!started && (
         <div className="text-center mt-20">
           <button
@@ -251,7 +248,6 @@ export default function ExamPage() {
         </div>
       )}
 
-      {/* QUESTIONS */}
       <div className="grid gap-6">
         {questions.map((q, i) => (
           <motion.div key={q.id} className="bg-white/5 p-6 rounded-xl">
@@ -272,7 +268,6 @@ export default function ExamPage() {
         ))}
       </div>
 
-      {/* SUBMIT */}
       {started && !submitted && (
         <div className="text-center mt-10">
           <button
@@ -284,7 +279,6 @@ export default function ExamPage() {
         </div>
       )}
 
-      {/* CAMERA */}
       {started && (
         <div className="fixed bottom-4 right-4 z-40">
           <video
@@ -297,7 +291,6 @@ export default function ExamPage() {
         </div>
       )}
 
-      {/* MODAL */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-slate-800 p-8 rounded-2xl w-96 shadow-xl text-center">
