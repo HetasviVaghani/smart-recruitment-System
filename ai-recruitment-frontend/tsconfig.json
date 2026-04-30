@@ -15,7 +15,7 @@
     "incremental": true,
 
     "baseUrl": ".",
-    "ignoreDeprecations": "latest",   // ✅ ADD THIS LINE
+  // ✅ ADD THIS LINE
 
     "plugins": [
       {
