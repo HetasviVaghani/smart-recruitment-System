@@ -15,24 +15,22 @@
     "incremental": true,
 
     "baseUrl": ".",
-  // ✅ ADD THIS LINE
+
+    "paths": {
+      "@/*": ["./*"]
+    },
 
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
