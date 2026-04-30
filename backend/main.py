@@ -45,7 +45,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000","https://smart-recruitment-system-cajzxn295-23aihet015-3622s-projects.vercel.app"], # allow all (for development)
+    allow_origins=["http://localhost:3000","https://smart-recruitment-system-15f9bbxh4-23aihet015-3622s-projects.vercel.app/"], # allow all (for development)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
