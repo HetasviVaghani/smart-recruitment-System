@@ -36,15 +36,6 @@ def get_logged_in_user(db, current_user):
     
     return user
 
-
-
-
-
-
-
-
-
-
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -54,7 +45,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000","https://smart-recruitment-system-cajzxn295-23aihet015-3622s-projects.vercel.app/"], # allow all (for development)
+    allow_origins=["http://localhost:3000","https://smart-recruitment-system-cajzxn295-23aihet015-3622s-projects.vercel.app"], # allow all (for development)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
