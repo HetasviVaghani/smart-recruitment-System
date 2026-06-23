@@ -2,19 +2,6 @@
 
 > An AI-powered recruitment platform that automates resume screening, candidate ranking, job matching, aptitude assessment, interview workflows, and hiring decisions using Large Language Models (LLMs), NLP, and Machine Learning.
 
-<p align="center">
-  <img src="./docs/workflow-diagram.png" alt="Smart Recruit AI Workflow" width="100%">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" />
-  <img src="https://img.shields.io/badge/FastAPI-Backend-green?style=for-the-badge&logo=fastapi" />
-  <img src="https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql" />
-  <img src="https://img.shields.io/badge/Groq-LLM-orange?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/AI-Recruitment-purple?style=for-the-badge" />
-</p>
-
----
 
 ## 📌 Overview
 
